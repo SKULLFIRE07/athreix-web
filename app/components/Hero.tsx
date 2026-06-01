@@ -157,7 +157,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-8 flex flex-col sm:flex-row gap-3"
           >
             <a
@@ -178,7 +178,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
             className="mt-10 grid grid-cols-2 md:flex flex-wrap items-center gap-y-8 gap-x-6 md:gap-x-0"
           >
             {stats.map((s, i) => (
@@ -201,7 +201,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 relative mt-12 lg:mt-0"
         >
           <div className="relative p-[1px] rounded-sm bg-gradient-to-b from-white/20 via-white/5 to-transparent">
@@ -227,8 +227,8 @@ export default function Hero() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
-                      duration: 0.4,
-                      delay: 0.9 + i * 0.18,
+                      duration: 0.3,
+                      delay: 0.4 + i * 0.1,
                       ease: "easeOut",
                     }}
                     className={`${lineColor(l.kind)} whitespace-pre ${
@@ -241,7 +241,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 2.2 }}
+                  transition={{ delay: 1.2 }}
                   className="text-white/40 mt-3"
                 >
                   <span className="text-[var(--lava-300)]">➜</span>{" "}

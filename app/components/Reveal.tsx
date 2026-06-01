@@ -18,7 +18,7 @@ const offsetFor = (d: Direction) => {
 export default function Reveal({
   children,
   delay = 0,
-  duration = 0.8,
+  duration = 0.5,
   direction = "up",
   className = "",
   amount = 0.2,
@@ -87,8 +87,8 @@ export function RevealWord({
               animate={forceAnimate ? { y: "0%", opacity: 1 } : undefined}
               viewport={{ once: true, amount: 0 }}
               transition={{
-                duration: 0.9,
-                delay: delay + i * 0.08,
+                duration: 0.6,
+                delay: delay + i * 0.04,
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
