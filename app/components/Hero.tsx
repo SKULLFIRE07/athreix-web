@@ -115,10 +115,13 @@ export default function Hero() {
           >
             <span className="float-badge inline-flex items-center gap-1.5 px-3 py-1 border border-[var(--lava-300)]/30 bg-[var(--lava-300)]/5 mono text-[9px] tracking-[0.2em] text-[var(--lava-100)]">
               <span className="w-1 h-1 rounded-full bg-[var(--lava-300)] pulse-dot" />
-              NEW: GPT-4O AGENTS
+              SOC-2 TYPE II COMPLIANT
             </span>
             <span className="float-badge inline-flex items-center gap-1.5 px-3 py-1 border border-white/10 bg-white/3 mono text-[9px] tracking-[0.2em] text-white/50">
-              SOC-2 COMPLIANT
+              HIPAA READY
+            </span>
+            <span className="float-badge inline-flex items-center gap-1.5 px-3 py-1 border border-white/10 bg-white/3 mono text-[9px] tracking-[0.2em] text-white/50">
+              GDPR SECURE
             </span>
           </motion.div>
 
