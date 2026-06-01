@@ -71,7 +71,9 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
+        open ? "bottom-0" : ""
+      } ${
+        scrolled && !open
           ? "bg-black/70 backdrop-blur-xl border-b border-white/8"
           : "bg-transparent"
       }`}
@@ -173,7 +175,7 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 bg-black md:hidden"
+            className="fixed inset-0 z-[40] bg-black/70 backdrop-blur-3xl md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {links.map((l, i) => (
