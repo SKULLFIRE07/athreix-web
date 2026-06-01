@@ -132,7 +132,7 @@ export default function Hero() {
             <TypingLabel text="AI AUTOMATION STUDIO" startDelay={0.6} />
           </motion.div>
 
-          <h1 className="display text-[2.75rem] leading-[1.0] md:text-7xl lg:text-[5.5rem] md:leading-[0.95] overflow-hidden">
+          <h1 className="display text-[2.75rem] leading-[1.0] md:text-7xl lg:text-[5.5rem] md:leading-[0.95]">
             <RevealWord text="FROM IDEA TO" />
             <br />
             <RevealWord text="PRODUCTION AI," delay={0.2} />

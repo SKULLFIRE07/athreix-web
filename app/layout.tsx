@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   description:
     "An AI automation studio building custom agents, AI SaaS platforms, internal tools, and production-grade ML for teams that move fast.",
   keywords: ["AI automation", "AI agents", "AI SaaS", "machine learning", "custom AI", "Athreix"],
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
