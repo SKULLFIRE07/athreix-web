@@ -69,15 +69,14 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        open ? "bottom-0" : ""
-      } ${
-        scrolled && !open
-          ? "bg-black/70 backdrop-blur-xl border-b border-white/8"
-          : "bg-transparent"
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+          scrolled && !open
+            ? "bg-black/70 backdrop-blur-xl border-b border-white/8"
+            : "bg-transparent"
+        }`}
+      >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10 h-14 md:h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center group" aria-label="Athreix">
@@ -167,7 +166,9 @@ export default function Nav() {
         )}
       </AnimatePresence>
 
-      {/* ── Full-screen mobile nav overlay ── */}
+      </header>
+
+      {/* ── Full-screen mobile nav overlay (Independent of Header) ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -175,8 +176,24 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[40] bg-black/70 backdrop-blur-3xl md:hidden"
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-3xl md:hidden"
           >
+            {/* Overlay Header (Logo + Close) */}
+            <div className="absolute top-0 inset-x-0 px-6 h-14 flex items-center justify-between">
+              <Link href="/" onClick={() => setOpen(false)} className="flex items-center group">
+                <Mark className="h-7 w-7 text-[var(--lava-300)]" />
+              </Link>
+
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              >
+                <span className="block h-px w-6 bg-white translate-y-[3px] rotate-45" />
+                <span className="block h-px w-6 bg-white -translate-y-[4px] -rotate-45" />
+              </button>
+            </div>
+
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {links.map((l, i) => (
                 <motion.a
@@ -235,6 +252,6 @@ export default function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
