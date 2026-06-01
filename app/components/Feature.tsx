@@ -119,7 +119,7 @@ export default function Feature() {
           >
             LIVE OPERATIONS
           </motion.div>
-          <h2 className="display text-5xl md:text-7xl leading-[0.95] overflow-hidden">
+          <h2 className="display text-5xl md:text-7xl leading-[0.95]">
             <RevealWord text="ONE PLATFORM." />
             <br />
             <RevealWord text="INFINITE AUTOMATIONS." delay={0.25} />
