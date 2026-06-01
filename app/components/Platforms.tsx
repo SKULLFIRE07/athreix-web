@@ -137,7 +137,7 @@ export default function Platforms() {
         </div>
 
         <div className="grid md:grid-cols-12 gap-12 mb-16">
-          <h2 className="md:col-span-7 display text-5xl md:text-7xl leading-[0.95] overflow-hidden">
+          <h2 className="md:col-span-7 display text-5xl md:text-7xl leading-[0.95]">
             <RevealWord text="WHAT WE" />
             <br />
             <RevealWord text="BUILD FOR YOU." delay={0.25} />

@@ -70,7 +70,7 @@ export default function Missions() {
         </div>
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <h2 className="display text-5xl md:text-7xl leading-[0.95] overflow-hidden">
+          <h2 className="display text-5xl md:text-7xl leading-[0.95]">
             <RevealWord text="REAL SYSTEMS," />
             <br />
             <RevealWord text="IN PRODUCTION." delay={0.2} />
@@ -99,10 +99,10 @@ export default function Missions() {
                 delay: idx * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative border-b border-white/10 grid md:grid-cols-12 gap-6 py-10 hover:bg-white/[0.02] transition cursor-pointer"
+              className="group relative border-b border-white/10 grid md:grid-cols-12 gap-6 py-10 hover:bg-white/[0.04] transition-colors duration-500 cursor-pointer"
             >
               {/* Left accent bar */}
-              <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--lava-300)] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
+              <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-white scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top shadow-[0_0_15px_3px_rgba(255,255,255,0.7)]" />
 
               {/* Number */}
               <div className="md:col-span-1 mono text-[11px] tracking-[0.2em] text-white/40 pt-2 group-hover:text-[var(--lava-100)] transition">
