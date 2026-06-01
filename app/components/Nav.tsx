@@ -39,6 +39,21 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /* ── close menu on scroll ── */
+  useEffect(() => {
+    const handleScroll = () => {
+      if (open) setOpen(false);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Also listen to touchmove on mobile just in case
+    window.addEventListener("touchmove", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, [open]);
+
   /* ── active-section tracking ── */
   useEffect(() => {
     const ids = ["services", "work", "process", "contact"];
@@ -51,7 +66,7 @@ export default function Nav() {
         ([entry]) => {
           if (entry.isIntersecting) setActive(`#${id}`);
         },
-        { threshold: 0.25, rootMargin: "-80px 0px -40% 0px" },
+        { threshold: 0, rootMargin: "-49% 0px -50% 0px" },
       );
       ob.observe(el);
       observers.push(ob);

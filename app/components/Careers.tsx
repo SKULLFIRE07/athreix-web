@@ -35,10 +35,10 @@ export default function Careers() {
           <span>START A PROJECT</span>
         </div>
 
-        <h2 className="display text-6xl md:text-[8rem] leading-[0.9] max-w-5xl overflow-hidden">
-          <RevealWord text="LET'S BUILD" />
+        <h2 className="display text-6xl md:text-[8rem] leading-[0.9] max-w-5xl">
+          <RevealWord text="LET'S BUILD" forceAnimate />
           <br />
-          <RevealWord text="SOMETHING." delay={0.3} />
+          <RevealWord text="SOMETHING." delay={0.3} forceAnimate />
         </h2>
 
         <motion.p

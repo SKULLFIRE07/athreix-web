@@ -27,10 +27,10 @@ const process = [
 ];
 
 const stack: Record<string, string[]> = {
-  FRONTEND: ["React", "Next.js", "React Native", "TypeScript", "Tailwind"],
-  BACKEND: ["Node.js", "Express / Fastify", "Postgres", "Redis", "Typed APIs"],
-  "AI / ML": ["LLM APIs", "RAG pipelines", "Tool calling", "Eval frameworks", "Vector DBs"],
-  INFRASTRUCTURE: ["AWS / GCP", "Docker", "Queues & workers", "Observability", "CI/CD"],
+  FRONTEND: ["React", "Next.js", "React Native", "TypeScript", "TailwindCSS", "Framer Motion"],
+  BACKEND: ["Go / Rust", "Node.js", "PostgreSQL", "Redis", "Kafka", "ClickHouse"],
+  "AI / ML": ["vLLM / TensorRT", "PyTorch", "RAG (Milvus / Pinecone)", "LangChain / LlamaIndex", "Custom Evals"],
+  INFRASTRUCTURE: ["Kubernetes", "AWS / GCP", "Docker", "Terraform", "Datadog / Grafana", "CI/CD"],
 };
 
 export default function Technology() {
