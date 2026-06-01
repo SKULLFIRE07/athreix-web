@@ -85,6 +85,17 @@ export default function Footer() {
             >
               aryan@athreix.com
             </motion.a>
+            <br />
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              href="tel:+919322973362"
+              className="mt-6 inline-block text-xl md:text-2xl text-white/85 hover:text-[var(--lava-100)] transition-colors duration-300 border-b border-white/15 pb-1 hover:border-[var(--lava-300)]"
+            >
+              +91 9322973362
+            </motion.a>
           </div>
 
           {/* Navigation + Socials */}
