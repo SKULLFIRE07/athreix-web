@@ -133,11 +133,11 @@ export default function Hero() {
           </motion.div>
 
           <h1 className="display text-[2.75rem] leading-[1.0] md:text-7xl lg:text-[5.5rem] md:leading-[0.95]">
-            <RevealWord text="FROM IDEA TO" />
+            <RevealWord text="FROM IDEA TO" forceAnimate />
             <br />
-            <RevealWord text="PRODUCTION AI," delay={0.2} />
+            <RevealWord text="PRODUCTION AI," delay={0.2} forceAnimate />
             <br />
-            <RevealWord text="SHIPPED." delay={0.4} />
+            <RevealWord text="SHIPPED." delay={0.4} forceAnimate />
           </h1>
 
           <motion.p

@@ -67,10 +67,12 @@ export function RevealWord({
   text,
   className = "",
   delay = 0,
+  forceAnimate = false,
 }: {
   text: string;
   className?: string;
   delay?: number;
+  forceAnimate?: boolean;
 }) {
   const words = text.split(" ");
   return (
@@ -81,8 +83,9 @@ export function RevealWord({
             <motion.span
               className="inline-block"
               initial={{ y: "110%", opacity: 0 }}
-              whileInView={{ y: "0%", opacity: 1 }}
-              viewport={{ once: true, amount: 0, margin: "50px" }}
+              whileInView={!forceAnimate ? { y: "0%", opacity: 1 } : undefined}
+              animate={forceAnimate ? { y: "0%", opacity: 1 } : undefined}
+              viewport={{ once: true, amount: 0 }}
               transition={{
                 duration: 0.9,
                 delay: delay + i * 0.08,
