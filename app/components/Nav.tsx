@@ -176,7 +176,7 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-3xl md:hidden"
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xl md:hidden"
           >
             {/* Overlay Header (Logo + Close) */}
             <div className="absolute top-0 inset-x-0 px-6 h-14 flex items-center justify-between">
