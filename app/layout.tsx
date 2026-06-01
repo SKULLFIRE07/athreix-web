@@ -43,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${alliance.variable} ${inter.variable} ${mono.variable} h-full antialiased`}
+      className={`${alliance.variable} ${inter.variable} ${mono.variable} h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full bg-black text-white flex flex-col overflow-x-hidden">
+      <body className="min-h-full bg-black text-white flex flex-col overflow-x-hidden w-full max-w-[100vw]">
         <ScrollProgress />
         {children}
       </body>
