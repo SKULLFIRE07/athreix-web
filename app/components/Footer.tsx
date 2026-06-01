@@ -4,10 +4,9 @@ import { motion } from "motion/react";
 import Mark from "./Mark";
 
 const socials = [
-  { label: "LINKEDIN", href: "#" },
-  { label: "X", href: "#" },
-  { label: "INSTAGRAM", href: "#" },
-  { label: "WHATSAPP", href: "#" },
+  { label: "LINKEDIN", href: "https://www.linkedin.com/company/athreix/?viewAsMember=true" },
+  { label: "INSTAGRAM", href: "https://www.instagram.com/theathreix?igsh=dm0xdng4eGE5eTho" },
+  { label: "WHATSAPP", href: "https://wa.me/919322973362" },
 ];
 
 const footerLinks = [
