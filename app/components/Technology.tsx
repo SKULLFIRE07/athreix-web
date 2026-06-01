@@ -48,9 +48,9 @@ export default function Technology() {
 
         <div className="grid md:grid-cols-12 gap-12 mb-16">
           <h2 className="md:col-span-8 display text-5xl md:text-7xl leading-[0.95]">
-            <RevealWord text="HOW WE GO FROM" />
+            <RevealWord text="HOW WE GO FROM" forceAnimate />
             <br />
-            <RevealWord text="ZERO TO SHIPPED." delay={0.25} />
+            <RevealWord text="ZERO TO SHIPPED." delay={0.25} forceAnimate />
           </h2>
           <Reveal
             delay={0.4}

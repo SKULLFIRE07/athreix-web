@@ -173,7 +173,7 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-50 nav-fullscreen md:hidden"
+            className="fixed inset-0 z-50 bg-black md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
               {links.map((l, i) => (

@@ -120,9 +120,9 @@ export default function Feature() {
             LIVE OPERATIONS
           </motion.div>
           <h2 className="display text-5xl md:text-7xl leading-[0.95]">
-            <RevealWord text="ONE PLATFORM." />
+            <RevealWord text="ONE PLATFORM." forceAnimate />
             <br />
-            <RevealWord text="INFINITE AUTOMATIONS." delay={0.25} />
+            <RevealWord text="INFINITE AUTOMATIONS." delay={0.25} forceAnimate />
           </h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

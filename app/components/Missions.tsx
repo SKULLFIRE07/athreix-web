@@ -71,9 +71,9 @@ export default function Missions() {
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <h2 className="display text-5xl md:text-7xl leading-[0.95]">
-            <RevealWord text="REAL SYSTEMS," />
+            <RevealWord text="REAL SYSTEMS," forceAnimate />
             <br />
-            <RevealWord text="IN PRODUCTION." delay={0.2} />
+            <RevealWord text="IN PRODUCTION." delay={0.2} forceAnimate />
           </h2>
           <motion.a
             initial={{ opacity: 0, y: 10 }}
