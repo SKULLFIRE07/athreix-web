@@ -12,6 +12,7 @@ import Preloader from "./components/Preloader";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
 import GlowTracker from "./components/GlowTracker";
+import { useEffect } from "react";
 
 const marqueeItems = [
   "25+ PROJECTS DELIVERED",
@@ -43,6 +44,13 @@ function StatsMarquee() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Preloader />
