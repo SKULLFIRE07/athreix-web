@@ -207,8 +207,8 @@ function HeroSection() {
       <Core3D />
 
       <div className="hero-parallax flex-1 flex flex-col justify-center items-center w-full px-6 sm:px-12 md:px-16 lg:px-20 relative z-10 text-center">
-        <p ref={subtitleRef} className="mono text-xs sm:text-sm uppercase tracking-[0.4em] pl-[0.4em] text-black/70 mb-8 sm:mb-12 font-extrabold text-center w-full">
-          One of India's first AI-native agencies
+        <p ref={subtitleRef} className="mono text-sm sm:text-base md:text-lg uppercase tracking-[0.3em] sm:tracking-[0.4em] pl-[0.4em] text-black/70 mb-8 sm:mb-12 font-extrabold text-center w-full">
+          One of India's first AI-native companies
         </p>
         <h1
           className="hero-headline font-medium select-none whitespace-nowrap opacity-0"
