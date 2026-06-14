@@ -1,165 +1,136 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Mark from "./Mark";
 
 const socials = [
   { label: "LINKEDIN", href: "https://www.linkedin.com/company/athreix/?viewAsMember=true" },
-  { label: "INSTAGRAM", href: "https://www.instagram.com/theathreix?igsh=dm0xdng4eGE5eTho" },
+  { label: "INSTAGRAM", href: "https://www.instagram.com/theathreix" },
   { label: "WHATSAPP", href: "https://wa.me/919322973362" },
 ];
 
 const footerLinks = [
   { label: "SERVICES", href: "#services" },
-  { label: "WORK", href: "#work" },
-  { label: "PROCESS", href: "#process" },
+  { label: "PORTFOLIO", href: "#portfolio" },
+  { label: "AI LAB", href: "#ai-lab" },
   { label: "CONTACT", href: "#contact" },
 ];
 
-const marqueeText = "AGENTS • PLATFORMS • TOOLS • ML • DATA • AUTOMATION • ";
-
 export default function Footer() {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!ref.current) return;
+
+    const ctx = gsap.context(() => {
+      // Fade up elements
+      gsap.utils.toArray<HTMLElement>(".reveal-up").forEach((el) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        });
+      });
+
+      // Massive ATHREIX text letters appear strictly one by one as you scroll!
+      gsap.fromTo(".athreix-letter", 
+        { opacity: 0, y: 150, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 1, // Stagger exactly equal to duration creates a strictly sequential timeline
+          duration: 1, 
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ref.current,
+            start: "top 60%",
+            end: "85% bottom",
+            scrub: 1
+          }
+        }
+      );
+    }, ref);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer
-      id="contact"
-      className="relative bg-black border-t border-white/10 overflow-hidden"
-    >
-      {/* Ticker bar at top of footer */}
-      <div className="overflow-hidden py-3 border-b border-white/5 bg-[var(--gr-100)]">
-        <div className="flex gap-8 whitespace-nowrap ticker-track">
-          <div className="display text-[11px] tracking-[0.4em] text-white/15">
-            {marqueeText.repeat(8)}
-          </div>
-          <div className="display text-[11px] tracking-[0.4em] text-white/15">
-            {marqueeText.repeat(8)}
-          </div>
-        </div>
-      </div>
+    <footer id="contact" ref={ref} className="relative bg-black text-white border-t border-white/5 overflow-hidden flex flex-col justify-between min-h-screen">
+      
+      {/* Abstract Background Glows */}
+      <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-white/[0.015] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[50vw] h-[50vw] bg-white/[0.015] rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Subtle top glow */}
-      <div
-        className="absolute top-12 inset-x-0 h-[200px] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 100% at 50% 0%, rgba(255,91,31,0.06), transparent 70%)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-[1600px] px-6 md:px-12 lg:px-20 py-16 md:py-20">
-        {/* Top row: CTA + nav + socials */}
-        <div className="grid md:grid-cols-12 gap-16 md:gap-12 mb-16">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-12 lg:px-20 pt-24 md:pt-32 relative z-10 flex-1 flex flex-col">
+        <div className="grid md:grid-cols-12 gap-16 md:gap-12 flex-1">
           {/* CTA */}
           <div className="md:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <div className="relative inline-block mb-10">
-                <Mark className="h-9 w-9 text-white" />
-                <div className="absolute inset-0 bg-[var(--lava-300)] opacity-0 hover:opacity-20 blur-xl transition-opacity duration-500" />
-              </div>
-            </motion.div>
-
-            <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="display text-4xl md:text-5xl lg:text-6xl leading-[1.05]"
-            >
-              HAVE A PROJECT YOU&apos;D LIKE TO DISCUSS?
-              <br />
-              <span className="text-white/40">LET&apos;S CONNECT.</span>
-            </motion.h3>
-
-            <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              href="mailto:aryan@athreix.com"
-              className="mt-10 inline-block text-xl md:text-2xl text-white/85 hover:text-[var(--lava-100)] transition-colors duration-300 border-b border-white/15 pb-1 hover:border-[var(--lava-300)]"
-            >
-              aryan@athreix.com
-            </motion.a>
-            <br />
-            <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              href="tel:+919322973362"
-              className="mt-6 inline-block text-xl md:text-2xl text-white/85 hover:text-[var(--lava-100)] transition-colors duration-300 border-b border-white/15 pb-1 hover:border-[var(--lava-300)]"
-            >
-              +91 9322973362
-            </motion.a>
+            <h3 className="reveal-up opacity-0 translate-y-10 display text-4xl md:text-5xl lg:text-7xl font-light leading-[1.05] mb-12 tracking-tight">
+              HAVE A PROJECT?<br />
+              <span className="text-white/30 italic">LET&apos;S BUILD IT.</span>
+            </h3>
+            
+            <div className="reveal-up opacity-0 translate-y-10 flex flex-col gap-6 items-start">
+              <a href="mailto:aryan@athreix.com" className="inline-flex items-center gap-4 text-xl md:text-3xl font-light text-white hover:text-white/80 transition-all duration-300">
+                aryan@athreix.com
+              </a>
+              <a href="tel:+919322973362" className="inline-flex items-center gap-4 text-xl md:text-3xl font-light text-white/50 hover:text-white transition-all duration-300">
+                +91 9322973362
+              </a>
+            </div>
           </div>
 
-          {/* Navigation + Socials */}
-          <div className="md:col-span-5 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-12 md:justify-end">
-            {/* Nav links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <div className="mono text-xs tracking-[0.2em] text-white/35 mb-6 uppercase">
-                Navigation
-              </div>
+          {/* Links */}
+          <div className="md:col-span-5 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-16 md:justify-end mt-8 md:mt-0">
+            <div className="reveal-up opacity-0 translate-y-10">
+              <div className="mono text-[10px] tracking-[0.3em] text-white/30 mb-8 uppercase font-bold">Navigation</div>
               <ul className="flex flex-col gap-5">
-                {footerLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="social-link relative display text-base md:text-lg tracking-[0.1em] text-white/70 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
+                {footerLinks.map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href} className="relative display text-base md:text-lg tracking-wide text-white/50 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block transform">{l.label}</a>
                   </li>
                 ))}
               </ul>
-            </motion.div>
-
-            {/* Social links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-            >
-              <div className="mono text-xs tracking-[0.2em] text-white/35 mb-6 uppercase">
-                Connect
-              </div>
+            </div>
+            <div className="reveal-up opacity-0 translate-y-10">
+              <div className="mono text-[10px] tracking-[0.3em] text-white/30 mb-8 uppercase font-bold">Connect</div>
               <ul className="flex flex-col gap-5">
                 {socials.map((s) => (
                   <li key={s.label}>
-                    <a
-                      href={s.href}
-                      className="social-link relative display text-base md:text-lg tracking-[0.1em] text-white/70 hover:text-white transition-colors"
-                    >
-                      {s.label}
-                    </a>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="relative display text-base md:text-lg tracking-wide text-white/50 hover:text-white transition-colors duration-300 hover:translate-x-2 inline-block transform">{s.label}</a>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <span className="text-xs text-white/35 uppercase tracking-wider">
-            © 2026 ATHREIX. ALL RIGHTS RESERVED.
-          </span>
-          <span className="mono text-[9px] tracking-[0.2em] text-white/25 flex items-center gap-2 uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--lava-300)] pulse-dot" />
-            Systems operational
-          </span>
+        {/* Bottom */}
+        <div className="pb-12 pt-8 flex flex-col justify-between items-start gap-6 relative z-20 mt-20 border-t border-white/10">
+          <span className="mono text-[10px] text-white/30 uppercase tracking-widest">© 2026 Athreix. All rights reserved.</span>
         </div>
       </div>
+
+      {/* MASSIVE BACKGROUND TYPOGRAPHY */}
+      <div className="absolute inset-0 overflow-hidden flex justify-center items-end pb-24 sm:pb-32 pointer-events-none select-none z-0">
+        <div 
+          className="text-[18vw] md:text-[24vw] font-bold text-white/[0.08] leading-[0.75] tracking-tighter flex"
+          style={{ fontFamily: "var(--font-alliance)" }}
+        >
+          {["A", "T", "H", "R", "E", "I", "X"].map((letter, i) => (
+            <span key={i} className="athreix-letter opacity-0 translate-y-20 inline-block">
+              {letter}
+            </span>
+          ))}
+        </div>
+      </div>
+
     </footer>
   );
 }

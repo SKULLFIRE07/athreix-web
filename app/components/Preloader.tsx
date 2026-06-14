@@ -1,88 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import Mark from "./Mark";
 
 export default function Preloader() {
-  const [loading, setLoading] = useState(true);
+  const [visible, setVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lettersRef = useRef<HTMLDivElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.body.style.overflow = loading ? "hidden" : "";
-    const t = setTimeout(() => setLoading(false), 2800);
+    document.body.style.overflow = "hidden";
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setVisible(false);
+        document.body.style.overflow = "";
+      },
+    });
+
+    // Progress bar
+    tl.to(barRef.current, { scaleX: 1, duration: 2.2, ease: "power4.out" }, 0);
+
+    // Letters stagger in
+    if (lettersRef.current) {
+      tl.fromTo(
+        lettersRef.current.children,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.25, stagger: 0.08, ease: "power2.out" },
+        0.8
+      );
+    }
+
+    // Slide preloader out
+    tl.to(containerRef.current, { yPercent: -100, duration: 0.9, ease: "power3.inOut" }, 2.6);
+
     return () => {
-      clearTimeout(t);
       document.body.style.overflow = "";
+      tl.kill();
     };
-  }, [loading]);
+  }, []);
+
+  if (!visible) return null;
 
   return (
-    <AnimatePresence>
-      {loading && (
-        <motion.div
-          className="fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center gap-8"
-          exit={{ y: "-100%" }}
-          transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
-        >
-          {/* Mark — path draws, then fills */}
-          <svg viewBox="0 0 48 48" className="w-16 h-16">
-            <motion.path
-              d="M24 3 L44 45 L4 45 Z"
-              fill="none"
-              stroke="white"
-              strokeWidth={1.2}
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.4, ease: "easeInOut" }}
-            />
-            <motion.path
-              d="M24 3 L44 45 L4 45 Z"
-              fill="white"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.15, duration: 0.4 }}
-            />
-            <motion.path
-              d="M24 17 L34 42 L28 42 L24 33 L20 42 L14 42 Z"
-              fill="black"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.35, duration: 0.25 }}
-            />
-          </svg>
+    <div
+      ref={containerRef}
+      className="fixed inset-0 z-[10000] bg-white flex flex-col items-center justify-center gap-6 will-change-transform"
+    >
+      <Mark className="w-12 h-12 text-black" />
 
-          {/* Brand typing */}
-          <div className="display text-xl tracking-[0.35em]">
-            {"ATHREIX".split("").map((ch, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 1.0 + i * 0.09,
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
-              >
-                {ch}
-              </motion.span>
-            ))}
-          </div>
+      <div ref={lettersRef} className="display text-lg tracking-[0.35em] text-black">
+        {"ATHREIX".split("").map((ch, i) => (
+          <span key={i} className="inline-block opacity-0 translate-y-3">{ch}</span>
+        ))}
+      </div>
 
-          {/* Progress bar */}
-          <div className="h-px w-20 bg-white/10 overflow-hidden rounded-full">
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                background:
-                  "linear-gradient(90deg, var(--lava-500), var(--lava-300))",
-              }}
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 2.3, ease: [0.22, 1, 0.36, 1] }}
-            />
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+      <div className="w-16 h-px bg-black/10 overflow-hidden">
+        <div ref={barRef} className="h-full bg-black origin-left" style={{ transform: "scaleX(0)" }} />
+      </div>
+    </div>
   );
 }

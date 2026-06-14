@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import ScrollProgress from "./components/ScrollProgress";
 
 const alliance = localFont({
   src: "../public/fonts/AllianceNo2-Regular.otf",
@@ -35,6 +34,8 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+import SmoothScroll from "./components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,11 +44,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${alliance.variable} ${inter.variable} ${mono.variable} h-full antialiased overflow-x-hidden`}
+      className={`${alliance.variable} ${inter.variable} ${mono.variable} antialiased`}
     >
-      <body className="min-h-full bg-black text-white flex flex-col overflow-x-hidden w-full max-w-[100vw]">
-        <ScrollProgress />
-        {children}
+      <body className="bg-white text-black w-full">
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );
